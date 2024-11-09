@@ -1,0 +1,11 @@
+{% extends 'tasks/dash.html' %}
+
+{% block tasks %}
+    <h1>{{ task.title }}</h1>
+    <p>{{ task.description }}</p>
+    <p>Completed: {{ task.completed }}</p>
+    <p>Created: {{ task.created_at }}</p>
+    <p>Updated: {{ task.updated_at }}</p>
+    <a href="{% url 'tasks:update' task.id %}">Edit Task</a>
+    <a href="{% url 'tasks:delete' task.id %}">Delete Task</a>
+{% endblock %}

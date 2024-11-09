@@ -1,0 +1,12 @@
+{% extends 'tasks/dash.html' %}
+{% load django_bootstrap5 %}
+{% block tasks %}
+  <div class="container">
+    <h1>Create a New Task</h1>
+    <form method="post" class="form">
+      {% csrf_token %}
+      {% bootstrap_form form %}
+      {% bootstrap_button button_type='submit' content='Create task' %}
+    </form>
+  </div>
+{% endblock %}

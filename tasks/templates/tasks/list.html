@@ -1,0 +1,30 @@
+{% extends 'tasks/dash.html' %}
+
+{% block tasks %}
+  <div class="container">
+    <h1>Task List</h1>
+    <div class="list-group list-group-flush">
+      {% for task in tasks %}
+      <li class="list-group-item">
+        <div class="d-flex justify-content-between align-items-center">
+          <a href="{% url 'tasks:detail' task.id %}" class=" list-group-item-action"><h3>{{ task.title }}</h3><p>{{ task.description }}</p></a>
+          <div class="form-check">
+            <i class="bi {% if task.completed %}
+                  bi-check-square
+              {% else %} 
+                  bi-square
+              {% endif %}"
+              id="taskCompleted{{ task.id }}"
+              onclick="toggleTaskStatus({{ task.id }})">
+            </i>
+          </div>
+        </div>
+      </li>
+      {% empty %}
+      <li class="list-group-item">
+        <a href="#" class="list-group-item list-group-item-action">No tasks available.</a>
+      </li>
+      {% endfor %}
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container-fluid bg-secondary mb-3">
+    <ul class="nav">
+      <li class="nav-item">
+        <a class="nav-link text-light fw-bold" href="{% url 'tasks:list' %}">Task app</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-light" href="{% url 'tasks:list' %}">List</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-light" href="{% url 'tasks:create' %}">Create</a>
+      </li>
+    </ul>
+  </div>
+  <div class="container">
+    {% block tasks %}
+      <!-- tasks -->
+    {% endblock %}
+  </div>
+{% endblock %}
