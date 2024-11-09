@@ -7,7 +7,6 @@ def index(request):
     installed_apps = [
         {
             "name": app.verbose_name,   # Human-readable name
-            "description": app.description,
             "label": app.label,
             "url": app.label + ":index",
         }
@@ -15,6 +14,7 @@ def index(request):
         if not app.name.startswith("django.")  # Exclude built-in Django apps
         if not app.name.startswith("django_")
         if not app.name == "app"
+        if not app.name == "geoip2"
     ]
     
     return render(request, "index.html", {"installed_apps": installed_apps})

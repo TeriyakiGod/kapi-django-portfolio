@@ -1,0 +1,19 @@
+<div class="card">
+  <div class="card-body">
+    <div class="d-flex justify-content-end align-items-center gap-2">
+      <span class="card-subtitle text-muted">{{ weather_info.time }}</span>
+      {% if weather_info.is_day %}
+        <span><i class="bi bi-brightness-high"></i></span>
+      {% else %}
+        <span><i class="bi bi-moon"></i></span>
+      {% endif %}
+    </div>
+    <h2 class="card-title">Weather in {{ weather_info.city }}, {{ weather_info.country }}</h2>
+    <p class="card-text">Temperature: {{ weather_info.temperature }}°C</p>
+    <p class="card-text">Humidity: {{ weather_info.humidity }}%</p>
+    <p class="card-text">Rain: {{ weather_info.rain }} mm</p>
+    <p class="card-text">Wind Speed: {{ weather_info.wind_speed }} m/s</p>
+    <a href="https://db-ip.com">IP Geolocation by DB-IP</a><br />
+    <a href="https://open-meteo.com">Weather Data by Open-Meteo</a>
+  </div>
+</div>

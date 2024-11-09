@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     "django_bootstrap5",
     'app.apps.AppConfig',
     'tasks.apps.TasksConfig',
+    'weather.apps.WeatherConfig',
+    'geoip2',
 ]
 
 MIDDLEWARE = [
@@ -128,3 +130,7 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# GeoIP2
+
+GEOIP_PATH = BASE_DIR / "static" / "geoip"
