@@ -17,7 +17,7 @@ def create(request):
         form = TaskForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('tasks:list')
+            return redirect('tasks:index')
     else:
         form = TaskForm()
     return render(request, 'tasks/create.html', {'form': form})
@@ -30,13 +30,13 @@ def update(request, id):
         task.title = title
         task.description = description
         task.save()
-        return redirect('tasks:list')
+        return redirect('tasks:index')
     return render(request, 'tasks/update.html', {'task': task})
 
 def delete(request, id):
     task = Task.objects.get(id=id)
     task.delete()
-    return redirect('tasks:list')
+    return redirect('tasks:index')
 
 @csrf_exempt
 def toggle_task_status(request, id):

@@ -1,11 +1,18 @@
 {% extends 'tasks/dash.html' %}
 
 {% block tasks %}
-    <h1>{{ task.title }}</h1>
-    <p>{{ task.description }}</p>
-    <p>Completed: {{ task.completed }}</p>
-    <p>Created: {{ task.created_at }}</p>
-    <p>Updated: {{ task.updated_at }}</p>
-    <a href="{% url 'tasks:update' task.id %}">Edit Task</a>
-    <a href="{% url 'tasks:delete' task.id %}">Delete Task</a>
+    <div class="card">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h1 class="mb-0">{{ task.title }}</h1>
+            <a href="{% url 'tasks:delete' task.id %}" class="btn btn-danger">
+                <i class="bi bi-trash-fill"></i>
+            </a>
+        </div>
+        <div class="card-body">
+            <p>{{ task.description }}</p>
+            <p>Completed: {{ task.completed }}</p>
+            <p>Created: {{ task.created_at }}</p>
+            <p>Updated: {{ task.updated_at }}</p>
+        </div>
+    </div>
 {% endblock %}

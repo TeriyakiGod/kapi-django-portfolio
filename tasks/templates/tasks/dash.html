@@ -1,22 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <div class="container-fluid bg-secondary mb-3">
-    <ul class="nav">
-      <li class="nav-item">
-        <a class="nav-link text-light fw-bold" href="{% url 'tasks:list' %}">Task app</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-light" href="{% url 'tasks:list' %}">List</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link text-light" href="{% url 'tasks:create' %}">Create</a>
-      </li>
-    </ul>
-  </div>
-  <div class="container">
-    {% block tasks %}
-      <!-- tasks -->
-    {% endblock %}
+  <div class="container bg-secondary px-0 mt-3" style="max-width: 500px;">
+    <div class="container bg-primary d-flex justify-content-between align-items-center">
+      <a href="{% url 'tasks:index' %}" class="btn btn-primary border border-white"><i class="bi bi-list"></i></a>
+      <h1>Task app</h1>
+      <div>
+        <a href="{% url 'tasks:create' %}" class="btn btn-success border border-white"><i class="bi bi-plus"></i></a>
+      </div>
+    </div>
+    <div class="container py-3">
+      {% block tasks %}
+        <!-- tasks -->
+      {% endblock %}
+    </div>
   </div>
 {% endblock %}
