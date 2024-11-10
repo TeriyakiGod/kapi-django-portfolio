@@ -9,6 +9,7 @@ def index(request):
             "name": app.verbose_name,   # Human-readable name
             "label": app.label,
             "url": app.label + ":index",
+            "description": app.description,
         }
         for app in apps.get_app_configs()
         if not app.name.startswith("django.")  # Exclude built-in Django apps

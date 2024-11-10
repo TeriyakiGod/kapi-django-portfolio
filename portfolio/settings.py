@@ -37,11 +37,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "django_bootstrap5",
+    'django_bootstrap5',
+    'geoip2',
     'app.apps.AppConfig',
     'tasks.apps.TasksConfig',
     'weather.apps.WeatherConfig',
-    'geoip2',
+    'shorturl.apps.ShorturlConfig',
 ]
 
 MIDDLEWARE = [

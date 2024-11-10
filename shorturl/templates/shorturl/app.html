@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container bg-secondary px-0 mt-3" style="max-width: 500px;">
+    <div class="container bg-primary text-center">
+      <h1 class="p-3 m-0">Shorten URL app</h1>
+    </div>
+    <div class="container py-3">
+      {% block shorturl %}
+        <!-- shorturl -->
+      {% endblock %}
+    </div>
+  </div>
+{% endblock %}

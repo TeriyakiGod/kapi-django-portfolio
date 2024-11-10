@@ -1,0 +1,7 @@
+{% extends "shorturl/app.html" %}
+
+{% block shorturl %}
+<h1>Your URL has been shortened!</h1>
+<p>Short URL: <a href="{{ short_url.short_code }}">{{ request.build_absolute_uri }}{{ short_url.short_code }}</a></p>
+<a href="{% url 'shorturl:index' %}" class="btn btn-primary">Shorten another URL</a>
+{% endblock %}
