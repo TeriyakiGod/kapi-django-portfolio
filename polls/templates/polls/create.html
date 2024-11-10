@@ -1,0 +1,73 @@
+{% extends "polls/app.html" %}
+
+{% block polls %}
+<h2>Create a New Poll</h2>
+<form method="post">
+    {% csrf_token %}
+    <fieldset>
+        {{ question_form.as_p }}
+    </fieldset>
+
+    <fieldset id="choices-fieldset">
+        {{ choice_formset.management_form }}
+        <div id="choice-forms">
+            {% for form in choice_formset %}
+                <div class="choice-form row mb-2">
+                    <div class="col-10 d-flex align-items-start gap-2">
+                        {{ form.as_p }}
+                        {% if forloop.counter > 2 %}
+                        <button type="button" class="btn btn-danger btn-sm remove-choice">
+                            <i class="bi bi-x"></i>
+                        </button>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <button type="button" id="add-choice" class="btn btn-primary mt-2">
+            <i class="bi bi-plus"></i> Add Choice
+        </button>
+    </fieldset>
+
+    <button type="submit" class="btn btn-success mt-3">Create Poll</button>
+</form>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var addChoiceButton = document.getElementById('add-choice');
+    var choiceFormsDiv = document.getElementById('choice-forms');
+    var totalForms = document.getElementById('id_form-TOTAL_FORMS');
+
+    addChoiceButton.addEventListener('click', function() {
+        var currentFormCount = parseInt(totalForms.value);
+        var newForm = choiceFormsDiv.children[0].cloneNode(true);
+        var formRegex = RegExp(`form-(\\d){1}-`, 'g');
+
+        newForm.innerHTML = newForm.innerHTML.replace(formRegex, `form-${currentFormCount}-`);
+        newForm.querySelector('input').value = ''; // Clear the input value
+
+        // Add the remove button to the new form
+        var removeButton = document.createElement('button');
+        removeButton.type = 'button';
+        removeButton.className = 'btn btn-danger btn-sm remove-choice';
+        removeButton.innerHTML = '<i class="bi bi-x"></i>';
+        removeButton.addEventListener('click', function() {
+            newForm.remove();
+            totalForms.value = parseInt(totalForms.value) - 1;
+        });
+
+        newForm.querySelector('.col-10').appendChild(removeButton);
+        choiceFormsDiv.appendChild(newForm);
+        totalForms.value = currentFormCount + 1;
+    });
+
+    // Add event listeners to existing remove buttons
+    document.querySelectorAll('.remove-choice').forEach(function(button) {
+        button.addEventListener('click', function() {
+            button.closest('.choice-form').remove();
+            totalForms.value = parseInt(totalForms.value) - 1;
+        });
+    });
+});
+</script>
+{% endblock %}

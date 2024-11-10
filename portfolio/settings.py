@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'tasks.apps.TasksConfig',
     'weather.apps.WeatherConfig',
     'shorturl.apps.ShorturlConfig',
+    'polls.apps.PollsConfig',
 ]
 
 MIDDLEWARE = [
